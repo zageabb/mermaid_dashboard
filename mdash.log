@@ -1,0 +1,32 @@
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5011
+ * Running on http://192.168.1.130:5011
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 130-581-758
+192.168.1.203 - - [03/Jun/2026 13:05:11] "GET /manage HTTP/1.1" 200 -
+192.168.1.203 - - [03/Jun/2026 13:07:51] "GET / HTTP/1.1" 200 -
+192.168.1.203 - - [03/Jun/2026 13:10:17] "GET /?url=http://192.168.1.249:9000/edit%23pako:eNq9VGtr2zAU_SsXQekGTsjcpEkM-5CHByUvL8kWGIahxPKD2VImS-26NP99V3KSue32bUxgLNnnnHvPvZIOZCciRjwS8pAzOc5oImlhFoBjcKjeZgSLxh2_F9mORY3PNNcM_OUL-PE8GQfBNIAa-U6xAlZ627CTkMyFYiGp_T8pV8JcF1smEbb6NAMRA-NKZqyEjIM_GfohOccxo8R_PIGv88XaR8qGQUrvGSgBD0J-g1iKAlTKIGKKZjnoPdDSfJAMKD5cQJzTpIRYSAxg00BNqrSNN5tBISKdX7K9ePQnwaJucV4l7Q_96RzzCLTcpbQ0qY3FThfo4QSp-66RguckW6jXhBdu1xcfhc5Vts_ZpVh71MUMpxlnVuwPBob-_zcwSqmBb9YGvkqFziPYYtbfNc1N064_XptXnOUKdWtNKV-pbAb-coUqIy0l47tHs1VMp0-EZ3iEwGDpb5aIrzbZ38H_sMZXV7BkOVWZ4GWa7cvTsYL6MXl6ajTEodpPHsajSSJZQpXdw3VVi_gNx-4Z-IcJvLE9c6ouOFV132Mh3xomcUgis4h4SmrmkILJgpolsa0PCRahQPtGKmIxRYuGdUTanvIvQhRnphQ6SYkX07zEld5HmOLpArh8xT5ETI6E5op4nV7LihDvQH4Qz71xm-9cMzqt9u1Nz2075JF4XbfZunXb_X6r3-72uv2jQ37aqK1mr9txCIsyJeSsuqXsZXX8BTmvcuM&name=SAP%20Invoiced%20Value HTTP/1.1" 200 -
+192.168.1.203 - - [03/Jun/2026 13:10:36] "GET /manage HTTP/1.1" 200 -
+192.168.1.203 - - [03/Jun/2026 13:10:43] "GET /?url=http://192.168.1.249:9000/edit%23pako:eNqVVE1vozAQ_StozmmUlCQErrvKZVWp5xUScvGQehtsx9jajyT_fW0TKDWw1XJAeN57M8_D2BcoBUXIANVXRo6K1DmP7CNlIZX4gaWOrteHB3FxEVWp6hxlUQ53rGA0h17Qwo5-vdNbso-H1CFRKuyYQ177bkhrpeO7Nb5J4QU_X5oCT1gj152qxd_EJF-Kgpv6BZVjj3Z6aSPuMYbR6H2X0fO3d6zRivFjj3JS4wgcGvPYLWhTWKtr0odKoYvDAKNE411FsSkVk5oJPjLSaKJNM_Yw5eA8s9Pe22EKOwcdqE6CaOualRiW9T963GWcLzxX1os-qfuv3zHskBswOxeidxsMXmi4A6xkbi68tW6CP2T0ozmZUXyWb4QIowqFFSrkJU4Xk7PFmMY6rBiYOfyPmUGL-413FFjAUTEKmVYGF1CjqolbgveWg361uhzcCaVYEXPyp_lmZZLw70LUnVIJc3yFrCKnxq6MdIfgfm_1FOQU1RdhuIYs9Rkgu8AvyNaP6TLd7HfxPo4fd-tkvYDfNrpKl_F25yLbZLO2H7cF_PE1V8sk3W_i1Aq2q12SbGw6pEwL9dRemv7uvP0FDiCkVA&name=SAP%20PO%20connection%20Diagram%20-%20Started HTTP/1.1" 200 -
+192.168.1.203 - - [03/Jun/2026 13:19:05] "GET /manage HTTP/1.1" 200 -
+192.168.1.203 - - [03/Jun/2026 13:19:09] "GET /?url=http://192.168.1.249:9000/edit%23pako:eNq9VGtr2zAU_SsXQekGTsjcpEkM-5CHByUvL8kWGIahxPKD2VImS-26NP99V3KSue32bUxgLNnnnHvPvZIOZCciRjwS8pAzOc5oImlhFoBjcKjeZgSLxh2_F9mORY3PNNcM_OUL-PE8GQfBNIAa-U6xAlZ627CTkMyFYiGp_T8pV8JcF1smEbb6NAMRA-NKZqyEjIM_GfohOccxo8R_PIGv88XaR8qGQUrvGSgBD0J-g1iKAlTKIGKKZjnoPdDSfJAMKD5cQJzTpIRYSAxg00BNqrSNN5tBISKdX7K9ePQnwaJucV4l7Q_96RzzCLTcpbQ0qY3FThfo4QSp-66RguckW6jXhBdu1xcfhc5Vts_ZpVh71MUMpxlnVuwPBob-_zcwSqmBb9YGvkqFziPYYtbfNc1N064_XptXnOUKdWtNKV-pbAb-coUqIy0l47tHs1VMp0-EZ3iEwGDpb5aIrzbZ38H_sMZXV7BkOVWZ4GWa7cvTsYL6MXl6ajTEodpPHsajSSJZQpXdw3VVi_gNx-4Z-IcJvLE9c6ouOFV132Mh3xomcUgis4h4SmrmkILJgpolsa0PCRahQPtGKmIxRYuGdUTanvIvQhRnphQ6SYkX07zEld5HmOLpArh8xT5ETI6E5op4nV7LihDvQH4Qz71xm-9cMzqt9u1Nz2075JF4XbfZunXb_X6r3-72uv2jQ37aqK1mr9txCIsyJeSsuqXsZXX8BTmvcuM&name=SAP%20Invoiced%20Value HTTP/1.1" 200 -
+192.168.1.203 - - [03/Jun/2026 13:19:25] "GET / HTTP/1.1" 200 -
+192.168.1.149 - - [03/Jun/2026 13:21:37] "GET / HTTP/1.1" 200 -
+192.168.1.149 - - [03/Jun/2026 13:21:38] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+192.168.1.149 - - [03/Jun/2026 13:22:11] "GET /manage HTTP/1.1" 200 -
+192.168.1.149 - - [03/Jun/2026 13:22:15] "GET /?url=http://192.168.1.249:9000/&name=SAP%20Connections%20-%20test%2010 HTTP/1.1" 200 -
+192.168.1.149 - - [03/Jun/2026 13:23:18] "POST /save HTTP/1.1" 200 -
+192.168.1.149 - - [03/Jun/2026 13:23:21] "GET /?url=http://192.168.1.249:9000/&name=SAP%20Connections%20-%20test%2010 HTTP/1.1" 200 -
+192.168.1.149 - - [03/Jun/2026 13:23:23] "GET /manage HTTP/1.1" 200 -
+192.168.1.149 - - [03/Jun/2026 13:23:30] "GET /?url=http://192.168.1.249:9000/&name=SAP%20Connections%20-%20test%2010 HTTP/1.1" 200 -
+192.168.1.149 - - [03/Jun/2026 13:23:34] "GET /manage HTTP/1.1" 200 -
+192.168.1.149 - - [03/Jun/2026 13:23:45] "[32mPOST /delete/24 HTTP/1.1[0m" 302 -
+192.168.1.149 - - [03/Jun/2026 13:23:45] "GET /manage HTTP/1.1" 200 -
+192.168.1.149 - - [03/Jun/2026 13:23:50] "GET /?url=http://192.168.1.249:9000/&name=SAP%20Connections%20-%20test%2010 HTTP/1.1" 200 -
+192.168.1.149 - - [03/Jun/2026 13:24:03] "GET /manage HTTP/1.1" 200 -
+192.168.1.149 - - [03/Jun/2026 13:24:10] "GET / HTTP/1.1" 200 -

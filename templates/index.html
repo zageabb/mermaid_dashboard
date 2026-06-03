@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="bg-white border-bottom px-3 py-2 d-flex align-items-center justify-content-between" style="height: 45px;">
+    <div class="d-flex align-items-center gap-2">
+        <span class="badge bg-primary px-2.5 py-1.5 fs-7">Active Project</span>
+        <h5 class="mb-0 text-dark fw-semibold" id="activeWorkspaceTitle">{{ current_name }}</h5>
+    </div>
+    <small class="text-muted font-monospace d-none d-md-block" style="font-size: 0.75rem;">Workspace Port Matrix Status: Online</small>
+</div>
+
+<div class="iframe-container" style="height: calc(100vh - 101px);">
+    <iframe id="mermaidFrame" src="{{ current_url }}"></iframe>
+</div>
+
+<button type="button" class="btn btn-primary position-fixed bottom-0 end-0 m-4 shadow-lg btn-lg" data-bs-toggle="modal" data-bs-target="#saveModal" style="z-index: 1050;">
+    💾 Save Current State
+</button>
+
+<div class="modal fade" id="saveModal" tabindex="-1" aria-labelledby="saveModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <form action="/save" method="POST" id="saveForm">
+        <div class="modal-header">
+          <h5 class="modal-title" id="saveModalLabel">Save Current Diagram State</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" name="url" id="hiddenUrlInput">
+            
+            <div class="mb-3">
+              <label for="description" class="form-label fw-bold">Diagram Description</label>
+              <input type="text" class="form-control" id="description" name="description" placeholder="e.g., Core Architecture Topology Setup" required>
+              <small class="text-muted">Keep this name identical if you wish to overwrite or iterate on your matching text file logs.</small>
+            </div>
+
+            <div class="mb-3">
+              <label for="notes" class="form-label fw-bold">Notes / Specifications</label>
+              <textarea class="form-control" id="notes" name="notes" rows="4" placeholder="Context details..."></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Confirm & Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const saveModal = document.getElementById('saveModal');
+    
+    saveModal.addEventListener('show.bs.modal', function () {
+        const iframe = document.getElementById('mermaidFrame');
+        const hiddenInput = document.getElementById('hiddenUrlInput');
+        const descriptionField = document.getElementById('description');
+        const activeTitleText = document.getElementById('activeWorkspaceTitle').innerText;
+        
+        // 1. Auto-extract raw code string configuration links out of iframe memory window
+        try {
+            hiddenInput.value = iframe.contentWindow.location.href;
+        } catch (e) {
+            console.warn("Using baseline configuration mapping.");
+            hiddenInput.value = iframe.src;
+        }
+
+        // 2. Pre-populate the naming field input box if it isn't an unassigned "New Diagram Canvas" session
+        if (activeTitleText && activeTitleText !== 'New Diagram Canvas') {
+            descriptionField.value = activeTitleText;
+        } else {
+            descriptionField.value = '';
+        }
+    });
+</script>
+{% endblock %}
