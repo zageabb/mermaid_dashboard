@@ -20,7 +20,7 @@
 <div class="modal fade" id="saveModal" tabindex="-1" aria-labelledby="saveModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <form action="/save" method="POST" id="saveForm">
+      <form action="{{ url_for('save') }}" method="POST" id="saveForm">
         <div class="modal-header">
           <h5 class="modal-title" id="saveModalLabel">Save Current Diagram State</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
