@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="{{ url_for('index') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mermaid Canvas Dashboard</title>
@@ -16,15 +17,15 @@
 <body class="bg-light">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
-        <a class="navbar-brand" href="/">Mermaid Workspace</a>
+        <a class="navbar-brand" href="{{ url_for('index') }}">Mermaid Workspace</a>
         
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Canvas</a>
+                    <a class="nav-link" href="{{ url_for('index') }}">Canvas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/manage">📁 Manage Diagrams</a>
+                    <a class="nav-link" href="{{ url_for('manage') }}">📁 Manage Diagrams</a>
                 </li>
                 
                 <li class="nav-item dropdown">
@@ -35,7 +36,7 @@
                         {% if saved_links %}
                             {% for link in saved_links %}
                               <li>
-                                <a class="dropdown-item text-truncate" href="/?url={{ link.url | urlencode }}&name={{ link.description | urlencode }}" title="{{ link.description }}">
+                                <a class="dropdown-item text-truncate" href="{{ url_for('index') }}?url={{ link.url | urlencode }}&name={{ link.description | urlencode }}" title="{{ link.description }}">
                                 <strong>{{ link.description }}</strong>
                               </a>
                              </li>
