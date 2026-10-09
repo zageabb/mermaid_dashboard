@@ -10,7 +10,7 @@
         <div class="d-flex gap-2">
             <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#uploadModal">📤 Import .MMD File</button>
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#manualAddModal">➕ Add URL Manually</button>
-            <a href="/" class="btn btn-outline-dark">← Workspace Canvas</a>
+            <a href="{{ url_for('index') }}" class="btn btn-outline-dark">← Workspace Canvas</a>
        </div>
     </div>
 
@@ -36,9 +36,9 @@
                                     </small>
                                 </div>
                                 <div class="col-md-4 text-md-end mt-3 mt-md-0 d-flex flex-row flex-md-column justify-content-end gap-2">
-                                    <a href="/?url={{ diagram.url | urlencode }}&name={{ diagram.description | urlencode }}" class="btn btn-success w-100 mb-md-2">Launch in Canvas</a>
+                                    <a href="{{ url_for('index') }}?url={{ diagram.url | urlencode }}&name={{ diagram.description | urlencode }}" class="btn btn-success w-100 mb-md-2">Launch in Canvas</a>
                                     <button class="btn btn-outline-secondary w-100 mb-md-2" data-bs-toggle="modal" data-bs-target="#editModal-{{ diagram.id }}">Edit URL & Info</button>
-                                    <form action="/delete/{{ diagram.id }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this tracking record?');" class="w-100">
+                                    <form action="{{ url_for('delete', id=diagram.id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this tracking record?');" class="w-100">
                                         <button type="submit" class="btn btn-outline-danger w-100">Delete</button>
                                     </form>
                                 </div>
@@ -50,7 +50,7 @@
                 <div class="modal fade" id="editModal-{{ diagram.id }}" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content text-start">
-                            <form action="/edit/{{ diagram.id }}" method="POST">
+                            <form action="{{ url_for('edit', id=diagram.id) }}" method="POST">
                                 <div class="modal-header">
                                     <h5 class="modal-title">Modify Diagram Records & Link</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -85,7 +85,7 @@
 <div class="modal fade" id="manualAddModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="/save" method="POST">
+            <form action="{{ url_for('save') }}" method="POST">
                 <div class="modal-header">
                     <h5 class="modal-title">Register an Existing Diagram State</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -115,7 +115,7 @@
 <div class="modal fade" id="uploadModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="/upload-mmd" method="POST" enctype="multipart/form-data">
+            <form action="{{ url_for('upload_mmd') }}" method="POST" enctype="multipart/form-data">
                 <div class="modal-header">
                     <h5 class="modal-title">Import plain text .mmd diagram file</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
