@@ -4,9 +4,12 @@ import json
 import base64
 import zlib
 from flask import Flask, render_template, request, redirect, url_for
+from werkzeug.middleware.proxy_fix import ProxyFix
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+# UDA/Caddy is the single trusted proxy hop; isolate backend from untrusted ingress.
+app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1, x_prefix=1)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
