@@ -3,6 +3,7 @@ import re
 import json
 import base64
 import zlib
+from urllib.parse import quote, unquote
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.middleware.proxy_fix import ProxyFix
 from flask_sqlalchemy import SQLAlchemy
@@ -16,6 +17,7 @@ db = SQLAlchemy(app)
 
 MMD_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'saved_diagrams')
 os.makedirs(MMD_FOLDER, exist_ok=True)
+PUBLIC_EDITOR_URL = os.environ.get('MERMAID_EDITOR_URL', '/apps/mermaid-display-app/').rstrip('/') + '/'
 
 class SavedDiagram(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -57,6 +59,7 @@ def export_url_to_mmd_file(diagram_id, description, url_string):
     """Parses a Mermaid editor URL state and saves the raw code to a .mmd file."""
     try:
         mermaid_code = None
+        url_string = unquote(url_string)
         
         # Isolate base64 segment from URL hash variations
         if 'pako:' in url_string:
@@ -118,10 +121,19 @@ def convert_mmd_text_to_mermaid_url(mmd_text):
     return f"http://192.168.1.249:9000/#/edit/pako:{url_safe_b64}"
 
 
+def public_editor_url(saved_url=None):
+    """Route legacy Live Editor links through the public Mermaid Final app."""
+    if not saved_url:
+        return PUBLIC_EDITOR_URL
+    if saved_url.startswith(PUBLIC_EDITOR_URL):
+        return saved_url
+    return f"{PUBLIC_EDITOR_URL}?url={quote(saved_url, safe='')}"
+
+
 @app.route('/')
 def index():
     # Capture the url if launching an existing diagram
-    current_url = request.args.get('url', 'http://192.168.1.249:9000')
+    current_url = public_editor_url(request.args.get('url'))
     
     # Capture the name if launching an existing diagram, default to generic placeholder
     current_name = request.args.get('name', 'New Diagram Canvas')
