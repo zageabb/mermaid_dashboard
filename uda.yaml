@@ -1,0 +1,31 @@
+schema_version: 1
+application:
+  name: mermaid-dashboard
+  display_name: Mermaid Dashboard
+  group: TAIJU - Development
+source:
+  branch: main
+runtime:
+  type: python
+  version: "3.10.12"
+  working_dir: .
+build:
+  working_dir: .
+  commands:
+    - ["python", "-m", "pip", "install", "-r", "requirements.txt", "gunicorn"]
+service:
+  type: systemd
+  entrypoint: ["gunicorn", "--workers", "1", "--timeout", "180", "--bind", "0.0.0.0:5071", "app:app"]
+  port: 5071
+  health_path: /
+proxy:
+  enabled: true
+  path: /apps/mermaid-dashboard/
+  authentication: uda
+environment:
+  required: []
+deployment:
+  auto_update: false
+  rollback: true
+  github_reporting: false
+
